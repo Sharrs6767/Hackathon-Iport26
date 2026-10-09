@@ -1,0 +1,516 @@
+
+/* =====================================
+   PÁGINA PLANEJAMENTOS
+===================================== */
+
+.pagina-planejamento {
+    min-height: calc(100vh - 20px);
+    display: flex;
+    flex-direction: column;
+    background-color: #303030;
+    color: white;
+}
+
+
+/* =====================================
+   TÍTULO SUPERIOR
+===================================== */
+
+.titulo-planejamento {
+    min-height: 45px;
+    background-color: #303030;
+    border: 3px solid black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.titulo-planejamento h1,
+.titulo-planejamento span {
+    margin: 0;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+    color: white;
+}
+
+
+/* =====================================
+   ESTRUTURA CENTRAL
+===================================== */
+
+.estrutura-planejamento {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    flex: 1;
+    min-height: 650px;
+}
+
+.area-planejamento {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid black;
+}
+
+
+/* =====================================
+   ÁREA DA GRADE
+===================================== */
+
+.grade-rolagem {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 540px;
+    border-bottom: 2px solid black;
+}
+
+.grade-planejamento {
+    min-width: 850px;
+}
+
+/*
+   Todas as linhas utilizam exatamente
+   as mesmas seis colunas.
+*/
+
+.cabecalho-grade,
+.linha-funcionario {
+    display: grid;
+
+    grid-template-columns:
+        165px
+        repeat(5, minmax(135px, 1fr));
+}
+
+
+/* =====================================
+   CABEÇALHO DOS DIAS
+===================================== */
+
+.cabecalho-grade {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+
+    background-color: #303030;
+    border-bottom: 2px solid black;
+}
+
+.coluna-funcionario,
+.coluna-dia {
+    padding: 15px 8px;
+
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+
+    color: white;
+    border-right: 1px solid #111;
+}
+
+.coluna-dia:last-child {
+    border-right: none;
+}
+
+
+/* =====================================
+   LINHAS DOS FUNCIONÁRIOS
+===================================== */
+
+.linhas-planejamento {
+    min-height: 220px;
+}
+
+.linha-funcionario {
+    min-height: 90px;
+    border-bottom: 1px solid #555;
+}
+
+.nome-funcionario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 8px;
+    padding: 10px;
+
+    background-color: #f1f1f1;
+    border: 2px solid #0b4c68;
+
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* =====================================
+   CÉLULAS DOS DIAS
+===================================== */
+
+.celula-dia {
+    min-width: 0;
+    min-height: 90px;
+
+    padding: 6px;
+
+    border-right: 1px solid #555;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    background-color: rgba(255,255,255,0.02);
+}
+
+.celula-dia:last-child {
+    border-right: none;
+}
+
+/* Preparação visual para o drag-and-drop */
+
+.celula-dia:hover {
+    background-color: rgba(0, 120, 170, 0.12);
+}
+
+
+/* =====================================
+   BLOCOS DE ATIVIDADES
+===================================== */
+
+.bloco-atividade {
+    padding: 8px 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    background-color: #f1f1f1;
+    border: 2px solid #0b4c68;
+
+    color: black;
+    text-align: center;
+
+    font-size: 11px;
+    cursor: grab;
+}
+
+.bloco-atividade strong {
+    font-size: 12px;
+}
+
+.bloco-atividade:active {
+    cursor: grabbing;
+}
+
+
+/* =====================================
+   RODAPÉ DO PLANEJAMENTO
+===================================== */
+
+.rodape-planejamento {
+    flex: 1;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 20px;
+    padding: 20px 15px 35px;
+}
+
+
+/* =====================================
+   BOTÕES
+===================================== */
+
+.botoes-planejamento {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.botao-planejamento {
+    min-width: 190px;
+    padding: 14px 12px;
+
+    background-color: white;
+    border: 2px solid #0b4c68;
+
+    color: black;
+
+    font-size: 12px;
+    font-weight: bold;
+    font-style: italic;
+
+    cursor: pointer;
+}
+
+.botao-planejamento:hover {
+    background-color: #dceef5;
+}
+
+
+/* =====================================
+   AVISOS
+===================================== */
+
+.avisos-planejamento {
+    max-width: 380px;
+    padding: 15px 20px;
+
+    background-color: #1c2024;
+    border: 2px solid #0b4c68;
+
+    color: white;
+}
+
+.avisos-planejamento h3 {
+    margin: 0 0 10px;
+    font-size: 12px;
+}
+
+.avisos-planejamento p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* =====================================
+   PAINEL DIREITO
+===================================== */
+
+.painel-projetos-planejamento {
+    background-color: black;
+    padding: 15px 12px;
+
+    color: white;
+}
+
+.painel-projetos-planejamento h2 {
+    margin: 0 0 15px;
+    padding-bottom: 12px;
+
+    border-bottom: 2px solid white;
+
+    font-size: 14px;
+    font-style: italic;
+    text-align: center;
+}
+
+
+/* =====================================
+   RESUMO DOS PROJETOS
+===================================== */
+
+.lista-resumo-projetos {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.resumo-projeto {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.resumo-projeto span {
+    font-size: 14px;
+}
+
+.resumo-horas {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.barra-resumo {
+    width: 120px;
+    height: 22px;
+
+    background-color: white;
+    border: 1px solid #aaa;
+}
+
+.progresso-resumo {
+    height: 100%;
+    background-color: #147fa4;
+}
+
+.resumo-horas strong {
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+
+/* =====================================
+   TELAS MENORES
+===================================== */
+
+@media (max-width: 1050px) {
+
+    .estrutura-planejamento {
+        grid-template-columns: minmax(0, 1fr) 180px;
+    }
+
+    .rodape-planejamento {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .avisos-planejamento {
+        max-width: 100%;
+    }
+
+}
+
+
+/* =====================================
+   FUNDO DOS FORMULÁRIOS
+===================================== */
+
+.fundo-modal-planejamento {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background-color: rgba(0, 0, 0, 0.75);
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+}
+
+.fundo-modal-planejamento.aberto {
+    display: flex;
+}
+
+
+/* =====================================
+   JANELA DO FORMULÁRIO
+===================================== */
+
+.modal-planejamento {
+    width: 420px;
+    max-width: 90vw;
+
+    padding: 30px;
+
+    background-color: #181b1f;
+    border: 2px solid #0b4c68;
+
+    color: white;
+}
+
+.modal-planejamento h2 {
+    margin: 0 0 25px;
+
+    text-align: center;
+    font-size: 17px;
+    font-style: italic;
+}
+
+
+/* =====================================
+   CAMPOS
+===================================== */
+
+.modal-planejamento form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-planejamento label {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.modal-planejamento select,
+.modal-planejamento input {
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid #0b4c68;
+
+    background-color: white;
+    color: black;
+
+    font-size: 13px;
+}
+
+.modal-planejamento select {
+    cursor: pointer;
+}
+
+
+/* =====================================
+   BOTÕES DOS FORMULÁRIOS
+===================================== */
+
+.botoes-modal-planejamento {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.botao-cancelar-modal,
+.botao-confirmar-modal {
+    padding: 10px 16px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.botao-cancelar-modal {
+    background-color: #333;
+    border: 1px solid #666;
+    color: white;
+}
+
+.botao-confirmar-modal {
+    background-color: white;
+    border: 1px solid #0b4c68;
+    color: black;
+}
+
+/* =====================================
+   DRAG AND DROP
+===================================== */
+
+.bloco-atividade {
+    cursor: grab;
+    user-select: none;
+}
+
+.bloco-atividade:active {
+    cursor: grabbing;
+}
+
+/* Bloco durante o arrasto */
+
+.bloco-atividade.arrastando {
+    opacity: 0.4;
+    border-style: dashed;
+}
+
+/* Destinos disponíveis */
+
+.celula-dia {
+    transition: background-color 0.15s;
+}
+
+.celula-dia:hover {
+    background-color: rgba(0, 120, 170, 0.15);
+}

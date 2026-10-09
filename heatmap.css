@@ -1,0 +1,222 @@
+/* ======================================
+   1. ESTRUTURA GERAL DO HEATMAP
+====================================== */
+
+.pagina-heatmap {
+    min-height: calc(100vh - 20px);
+    padding: 10px;
+    color: white;
+}
+
+.titulo-heatmap {
+    min-height: 45px;
+    background-color: #303030;
+    border: 2px solid black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    font-size: 12px;
+    font-style: italic;
+}
+
+.titulo-heatmap h1 {
+    font-size: 14px;
+    margin: 0;
+}
+
+
+/* ======================================
+   2. ÁREA DOS CARTÕES E LEGENDA
+====================================== */
+
+.estrutura-heatmap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 18px;
+    padding: 20px;
+}
+
+.grade-heatmap {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    gap: 14px;
+}
+
+.legenda-heatmap {
+    background-color: rgba(0, 0, 0, 0.92);
+    padding: 18px;
+    align-self: start;
+}
+
+.legenda-heatmap h2 {
+    font-size: 13px;
+    font-style: italic;
+    border-bottom: 2px solid white;
+    padding-bottom: 12px;
+}
+
+.legenda-heatmap p {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.ponto-status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+
+/* ======================================
+   3. CARTÕES DOS FUNCIONÁRIOS
+====================================== */
+
+.cartao-heatmap {
+    min-width: 0;
+    padding: 18px;
+    border: 2px solid;
+    border-radius: 9px;
+    background-color: #111;
+}
+
+.cartao-heatmap h3 {
+    margin: 0 0 15px;
+    font-size: 17px;
+}
+
+.porcentagem-heatmap {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 28px;
+}
+
+.cartao-heatmap p {
+    font-size: 13px;
+    margin: 8px 0;
+}
+
+.trilho-heatmap {
+    width: 100%;
+    height: 9px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.preenchimento-heatmap {
+    height: 100%;
+    border-radius: 10px;
+    background-color: currentColor;
+}
+
+.situacao-heatmap {
+    font-weight: bold;
+}
+
+
+/* ======================================
+   4. CORES DE DISPONIBILIDADE
+====================================== */
+
+.cartao-heatmap.disponivel {
+    color: #39d995;
+    border-color: #08794f;
+    background-color: #041d16;
+}
+
+.cartao-heatmap.alta {
+    color: #ffd33d;
+    border-color: #a8870a;
+    background-color: #251e06;
+}
+
+.cartao-heatmap.maxima {
+    color: #ff923e;
+    border-color: #a34b12;
+    background-color: #281406;
+}
+
+.cartao-heatmap.sobrecarga {
+    color: #ff5a64;
+    border-color: #a52230;
+    background-color: #2a0a10;
+}
+
+.ponto-status.disponivel { background-color: #39d995; }
+.ponto-status.alta { background-color: #ffd33d; }
+.ponto-status.maxima { background-color: #ff923e; }
+.ponto-status.sobrecarga { background-color: #ff5a64; }
+
+
+/* ======================================
+   5. ASSISTENTE E BALÃO
+====================================== */
+
+.area-assistente-heatmap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+    padding: 30px;
+    margin-top: 15px;
+}
+
+/* Respeitar o atributo hidden do HTML */
+.area-assistente-heatmap[hidden] {
+    display: none;
+}
+
+.balao-heatmap {
+    max-width: 450px;
+    padding: 25px;
+    background-color: white;
+    color: black;
+    border: 2px solid #008bd2;
+    border-radius: 35px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.imagem-assistente-heatmap {
+    width: 145px;
+    height: 145px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    color: #008bd2;
+
+    border: 3px solid #008bd2;
+    border-radius: 50%;
+}
+
+
+/* ======================================
+   6. ADAPTAÇÃO A TELAS MENORES
+====================================== */
+
+@media (max-width: 950px) {
+
+    .estrutura-heatmap {
+        grid-template-columns: 1fr;
+    }
+
+    .grade-heatmap {
+        grid-template-columns: 1fr;
+    }
+
+    .area-assistente-heatmap {
+        flex-wrap: wrap;
+    }
+}

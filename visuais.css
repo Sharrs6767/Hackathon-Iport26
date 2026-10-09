@@ -1,0 +1,491 @@
+/* ================================
+   CONFIGURAÇÕES GERAIS
+================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #3f3f3f;
+
+}
+
+
+/* ================================
+   SIDEBAR
+================================ */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 185px;
+    height: 100vh;
+
+    background-color: black;
+
+    transition: width 0.3s;
+
+    z-index: 10;
+}
+
+
+/* Botão ☰ */
+
+.botao-menu {
+    width: 45px;
+    height: 40px;
+
+    margin: 5px;
+
+    background: none;
+    border: none;
+
+    color: white;
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+
+/* Menu */
+
+.menu {
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.menu-item {
+    display: flex;
+    align-items: center;
+
+    min-height: 38px;
+
+    padding-left: 30px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+    font-style: italic;
+    font-size: 13px;
+}
+
+
+.menu-item:hover {
+    background-color: #292929;
+}
+
+
+/* Logo inferior */
+
+.logo {
+    position: absolute;
+
+    bottom: 15px;
+    left: 10px;
+
+    width: 45px;
+    height: 45px;
+
+    border: 3px solid #008bd2;
+    border-radius: 50%;
+
+    color: #008bd2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 10px;
+}
+
+
+/* ================================
+   SIDEBAR RECOLHIDA
+================================ */
+
+.sidebar.recolhida {
+    width: 55px;
+}
+
+
+.sidebar.recolhida .menu-texto {
+    display: none;
+}
+
+
+/* ================================
+   CONTEÚDO
+================================ */
+
+.conteudo {
+    margin-left: 185px;
+
+    min-height: 100vh;
+
+    padding: 8px 20px 12px 14px;
+
+    transition: margin-left 0.3s;
+}
+
+
+/* Quando a sidebar fechar */
+
+.conteudo.expandido {
+    margin-left: 55px;
+}
+
+
+/* ================================
+   DASHBOARD
+================================ */
+
+.dashboard {
+  min-height: calc(100vh - 20px);
+
+    border: 3px solid black;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.50),
+            rgba(0, 0, 0, 0.50)
+        ),
+        url("../imgs/fundoiportsite.png");
+
+    background-size: auto, 820px auto;
+
+    background-repeat: repeat;
+    background-position: center top;
+}
+
+
+/* ================================
+   CABEÇALHO
+================================ */
+
+.cabecalho h1 {
+    height: 42px;
+
+    margin: 0;
+
+    padding: 14px 10px;
+
+    border-bottom: 2px solid black;
+
+    color: white;
+
+    font-size: 13px;
+    font-style: italic;
+}
+
+
+.semana {
+    height: 29px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 2px solid black;
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+/* ================================
+   RESUMO
+================================ */
+
+.resumo {
+    min-height: 195px;
+
+    padding: 45px 32px 15px;
+
+    border-bottom: 2px solid black;
+}
+
+
+.resumo h2 {
+    margin: 0 0 18px;
+
+    color: white;
+
+    font-size: 14px;
+    font-style: italic;
+}
+
+
+.cards {
+    display: flex;
+
+    align-items: center;
+}
+
+
+.card {
+  width: 166px;
+    height: 97px;
+
+    padding: 14px;
+
+    border: 2px solid #0c4058;
+
+    background-color: rgba(25, 30, 35, 0.92);
+
+    flex-shrink: 0;
+
+    color: white;
+}
+
+
+.card h3 {
+    margin: 0;
+
+    font-size: 13px;
+    font-style: italic;
+}
+
+
+.card strong {
+    height: 55px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    font-size: 13px;
+    font-style: italic;
+}
+
+
+/* Pequenas linhas azuis entre os cards */
+
+.ligacao {
+    width: 47px;
+    height: 14px;
+
+    margin: 0;
+
+    border-top: 3px solid #07384d;
+    border-bottom: 3px solid #07384d;
+
+    background-color: white;
+}
+
+
+/* ================================
+   ALERTAS
+================================ */
+
+.alerta,
+.sugestao {
+  
+ min-height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 8px;
+
+    border-bottom: 2px solid black;
+
+    background-color: rgba(20, 25, 30, 0.90);
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+/* ================================
+   UTILIZAÇÃO
+================================ */
+
+.utilizacao {
+    min-height: 145px;
+
+    padding: 10px;
+
+    border-bottom: 2px solid black;
+}
+
+
+.titulo-utilizacao {
+    margin: 3px 0 34px;
+
+    font-size: 12px;
+}
+
+
+.funcionario {
+    height: 18px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.nome {
+    width: 45px;
+
+    font-size: 13px;
+}
+
+
+.barra-area {
+    width: 245px;
+    height: 17px;
+}
+
+
+.barra {
+    height: 17px;
+
+    background-color: rgb(241, 78, 78);
+    
+}
+
+
+/* Tamanho visual de cada barra */
+
+.maria {
+    width: 100%;
+}
+
+.joao {
+    width: 84%;
+}
+
+.carlos {
+    width: 71%;
+}
+
+.ana {
+    width: 78%;
+}
+
+
+.porcentagem {
+    margin-left: 4px;
+
+    font-size: 12px;
+}
+
+
+/* Bolinhas de status */
+
+.status {
+    width: 14px;
+    height: 14px;
+
+    margin-left: 7px;
+
+    border-radius: 50%;
+
+    display: inline-block;
+}
+
+
+.vermelho {
+    background-color: #ee4561;
+}
+
+
+.verde {
+    background-color: #51d89a;
+}
+
+
+.amarelo {
+    background-color: #f4bf4f;
+}
+
+
+/* ================================
+   ASSISTENTE
+================================ */
+
+.area-assistente {
+    min-height: 198px;
+
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 35px;
+
+    padding-right: 50px;
+}
+
+
+.balao {
+    width: 415px;
+    min-height: 125px;
+
+    padding: 25px 50px 20px 115px;
+
+    border: 2px solid #07384d;
+
+    border-radius: 50%;
+
+    background-color: white;
+
+    font-size: 15px;
+}
+
+
+.assistente {
+    width: 145px;
+    height: 145px;
+
+    border: 2px solid #07384d;
+
+    border-radius: 50%;
+
+    background-color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+
+/* ================================
+   RESPONSIVIDADE SIMPLES
+================================ */
+
+@media (max-width: 950px) {
+
+    .cards {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .ligacao {
+        display: none;
+    }
+
+}
