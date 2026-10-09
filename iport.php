@@ -1,0 +1,365 @@
+<?php
+include 'PHP/dbconnect.php';
+$result = $con->query(
+    "SELECT id, Nome, Carga, Equipe FROM funcionario ORDER BY Nome"
+);
+
+$funcionarios = $result->fetch_all(MYSQLI_ASSOC);
+
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>iPORT - Gestão de Equipe</title>
+
+    <!-- Folha de estilos externa -->
+    <link rel="stylesheet" href="css/visuais.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         BARRA LATERAL
+    ========================== -->
+    <aside class="sidebar" id="sidebar">
+
+        <button class="botao-menu" id="botaoMenu">
+            ☰
+        </button>
+
+        <nav class="menu">
+            <a href="iport.html" class="menu-item">
+                <span class="menu-texto">VISÃO GERAL (ATUAL)</span>
+            </a>
+
+            <a href="funcionarios.php" class="menu-item">
+                <span class="menu-texto">FUNCIONÁRIOS</span>
+            </a>
+
+            <a href="projetos.php" class="menu-item">
+                <span class="menu-texto">PROJETOS</span>
+            </a>
+
+            <a href="planejamento.php" class="menu-item">
+                <span class="menu-texto">PLANEJAMENTOS</span>
+            </a>
+
+            <a href="equipes.php" class="menu-item">
+                <span class="menu-texto">EQUIPE</span>
+            </a>
+
+           <a href="heatmap.php" class="menu-item">
+                <span class="menu-texto">
+                    HEATMAP
+                </span>
+            </a>
+
+
+        </nav>
+
+        <div class="logo">
+            iPORT
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         CONTEÚDO PRINCIPAL
+    ========================== -->
+    <main class="conteudo">
+
+        <section class="dashboard">
+
+            <!-- Cabeçalho -->
+            <header class="cabecalho">
+                <h1>OLÁ (NOME GERENTE)</h1>
+
+                <div class="semana">
+                    ESSA É SUA SEMANA 6/10 - 12/10
+                </div>
+            </header>
+
+
+            <!-- =========================
+                 RESUMO DA EQUIPE
+            ========================== -->
+            <section class="resumo">
+
+                <h2>EQUIPE 1</h2>
+
+                <div class="cards">
+
+                    <article class="card">
+                        <h3>FUNCIONÁRIOS</h3>
+                        <?php echo '<strong>' . count($funcionarios) . '</strong>'; ?>
+                    </article>
+
+                    <div class="ligacao"></div>
+
+                    <article class="card">
+                        <h3>UTILIZAÇÃO</h3>
+                        <?php
+                        $percent = 0;
+                        $i = 0;
+                        foreach ($funcionarios as $funcionario):
+                        $id = $funcionario["id"];
+                        $result2 = $con->query(
+                            "SELECT SUM(horas) FROM periodo WHERE funcionarioid = $id"
+                        );
+                        $periodos = $result2->fetch_all(MYSQLI_ASSOC);
+
+                        $percent += ($periodos[0]['SUM(horas)'] / (int) $funcionario["Carga"]);
+                        $i++;
+                        
+                        endforeach;
+                        $finalpercent = ($percent / $i) * 100;
+                        echo '<strong>' . $finalpercent . '%</strong>'; 
+                        ?>
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 ALERTAS
+            ========================== -->
+            <section class="alertas">
+
+                <div class="alerta">
+                    ATENÇÃO! LINA ESTÁ COM 117% DE UTILIZAÇÃO NA PRÓXIMA SEMANA!
+                </div>
+
+                <div class="sugestao">
+                    SUGESTÃO: 8H DO PROJETO MARKETING PODEM SER ALOCADAS PARA JOÃO!
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 UTILIZAÇÃO DA EQUIPE
+            ========================== -->
+            <section class="utilizacao">
+
+                <p class="titulo-utilizacao">UTILIZAÇÃO DA EQUIPE</p>
+
+
+                <div class="funcionario">
+
+                    <span class="nome">Maria</span>
+
+                    <div class="barra-area">
+                        <div class="barra maria"></div>
+                    </div>
+
+                    <span class="porcentagem">117%</span>
+                    <span class="status vermelho"></span>
+
+                </div>
+
+
+                <div class="funcionario">
+
+                    <span class="nome">João</span>
+
+                    <div class="barra-area">
+                        <div class="barra joao"></div>
+                    </div>
+
+                    <span class="porcentagem">84%</span>
+                    <span class="status verde"></span>
+
+                </div>
+
+
+                <div class="funcionario">
+
+                    <span class="nome">Carlos</span>
+
+                    <div class="barra-area">
+                        <div class="barra carlos"></div>
+                    </div>
+
+                    <span class="porcentagem">71%</span>
+                    <span class="status verde"></span>
+
+                </div>
+
+
+                <div class="funcionario">
+
+                    <span class="nome">Ana</span>
+
+                    <div class="barra-area">
+                        <div class="barra ana"></div>
+                    </div>
+
+                    <span class="porcentagem">94%</span>
+                    <span class="status amarelo"></span>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 ASSISTENTE / PLANEJAMENTO
+            ========================== -->
+            <section class="area-assistente">
+
+                <div class="balao">
+                    Vá para <strong>“Planejamentos”</strong><br>
+                    para organizar as cargas<br>
+                    horárias de cada funcionário!
+                </div>
+
+                <div class="assistente">
+                    IA
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+
+
+<!-- =====================================
+     FORMULÁRIO ADICIONAR FUNCIONÁRIO
+===================================== -->
+
+<div class="fundo-modal-planejamento" id="modalFuncionario">
+
+    <div class="modal-planejamento">
+
+        <h2>ADICIONAR FUNCIONÁRIO</h2>
+
+        <form id="formAdicionarFuncionario">
+
+            <label for="selecionarFuncionario">
+                FUNCIONÁRIO
+            </label>
+
+            <select id="selecionarFuncionario" required>
+                <option value="">Selecione um funcionário</option>
+            </select>
+
+            <div class="botoes-modal-planejamento">
+
+                <button type="button"
+                        class="botao-cancelar-modal"
+                        id="cancelarFuncionario">
+                    CANCELAR
+                </button>
+
+                <button type="submit"
+                        class="botao-confirmar-modal">
+                    ADICIONAR
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     FORMULÁRIO ADICIONAR PROJETO
+===================================== -->
+
+<div class="fundo-modal-planejamento" id="modalProjeto">
+
+    <div class="modal-planejamento">
+
+        <h2>ADICIONAR ATIVIDADE</h2>
+
+        <form id="formAdicionarProjeto">
+
+            <label for="selecionarProjeto">
+                PROJETO
+            </label>
+
+            <select id="selecionarProjeto" required>
+                <option value="">Selecione um projeto</option>
+            </select>
+
+
+            <label for="funcionarioProjeto">
+                FUNCIONÁRIO RESPONSÁVEL
+            </label>
+
+            <select id="funcionarioProjeto" required>
+                <option value="">Selecione um funcionário</option>
+            </select>
+
+
+            <label for="diaProjeto">
+                DIA DA SEMANA
+            </label>
+
+            <select id="diaProjeto" required>
+
+                <option value="">Selecione o dia</option>
+                <option value="2026-10-05">SEGUNDA</option>
+                <option value="2026-10-06">TERÇA</option>
+                <option value="2026-10-07">QUARTA</option>
+                <option value="2026-10-08">QUINTA</option>
+                <option value="2026-10-09">SEXTA</option>
+
+            </select>
+
+
+            <label for="horasProjeto">
+                QUANTIDADE DE HORAS
+            </label>
+
+            <input type="number"
+                   id="horasProjeto"
+                   min="1"
+                   max="24"
+                   required>
+
+
+            <div class="botoes-modal-planejamento">
+
+                <button type="button"
+                        class="botao-cancelar-modal"
+                        id="cancelarProjeto">
+                    CANCELAR
+                </button>
+
+                <button type="submit"
+                        class="botao-confirmar-modal">
+                    ADICIONAR
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+
+
+    <!-- JavaScript externo -->
+    <script src="js/javaiport.js"></script>
+   
+</body>
+
+</html>

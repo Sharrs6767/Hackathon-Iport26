@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>iPORT - Planejamentos</title>
+
+    <!-- CSS geral -->
+    <link rel="stylesheet" href="css/visuais.css">
+
+    <!-- CSS exclusivo -->
+    <link rel="stylesheet" href="css/planejamento.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <button class="botao-menu" id="botaoMenu">
+            ☰
+        </button>
+
+        <nav class="menu">
+
+            <a href="iport.html" class="menu-item">
+                <span class="menu-texto">VISÃO GERAL</span>
+            </a>
+
+            <a href="funcionarios.php" class="menu-item">
+                <span class="menu-texto">FUNCIONÁRIOS</span>
+            </a>
+
+            <a href="projetos.html" class="menu-item">
+                <span class="menu-texto">PROJETOS</span>
+            </a>
+
+            <a href="planejamento.html" class="menu-item ativo">
+                <span class="menu-texto">PLANEJAMENTOS (ATUAL)</span>
+            </a>
+
+            <a href="equipes.html" class="menu-item">
+                <span class="menu-texto">EQUIPE</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <span class="menu-texto">HEATMAP</span>
+            </a>
+
+        </nav>
+
+        <div class="logo">iPORT</div>
+
+    </aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+
+    <main class="conteudo">
+
+        <section class="dashboard pagina-planejamento">
+
+            <!-- TÍTULO -->
+
+            <header class="titulo-planejamento">
+                <h1>PLANEJAMENTO SEMANAL</h1>
+                <span>05/10 - 09/10</span>
+            </header>
+
+
+            <!-- ÁREA DE TRABALHO -->
+
+            <div class="estrutura-planejamento">
+
+                <section class="area-planejamento">
+
+                    <!-- GRADE SEMANAL -->
+
+                    <div class="grade-rolagem">
+
+                        <div class="grade-planejamento">
+
+                            <!-- CABEÇALHO -->
+
+                            <div class="cabecalho-grade">
+
+                                <div class="coluna-funcionario">
+                                    FUNCIONÁRIO
+                                </div>
+
+                                <div class="coluna-dia">SEG</div>
+                                <div class="coluna-dia">TER</div>
+                                <div class="coluna-dia">QUA</div>
+                                <div class="coluna-dia">QUI</div>
+                                <div class="coluna-dia">SEX</div>
+
+                            </div>
+
+
+                            <!--
+                                O JavaScript criará aqui
+                                uma linha para cada funcionário.
+                            -->
+
+                            <div class="linhas-planejamento"
+                                 id="linhasPlanejamento">
+
+                                <!-- EXEMPLO VISUAL TEMPORÁRIO -->
+
+                                <div class="linha-funcionario"
+                                     data-funcionario-id="1">
+
+                                    <div class="nome-funcionario">
+                                        MARIA
+                                    </div>
+
+                                    <div class="celula-dia"
+                                         data-dia="2026-10-05">
+
+                                        <div class="bloco-atividade"
+                                             data-atividade-id="101"
+                                              draggable="true">
+                                            <span>MARKETING</span>
+                                            <strong>8h</strong>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="celula-dia"
+                                         data-dia="2026-10-06">
+
+                                        <div class="bloco-atividade"
+                                             data-atividade-id="102"
+                                             draggable="true">
+                                            <span>MARKETING</span>
+                                            <strong>8h</strong>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="celula-dia"
+                                         data-dia="2026-10-07">
+
+                                        <div class="bloco-atividade"
+                                             data-atividade-id="103"
+                                             draggable="true">
+                                            <span>MARKETING</span>
+                                            <strong>8h</strong>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="celula-dia"
+                                         data-dia="2026-10-08">
+                                    </div>
+
+                                    <div class="celula-dia"
+                                         data-dia="2026-10-09">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONTROLES INFERIORES -->
+
+                    <div class="rodape-planejamento">
+
+                        <div class="botoes-planejamento">
+
+                            <button
+                                type="button"
+                                id="adicionarFuncionario"
+                                class="botao-planejamento">
+                                + ADICIONAR FUNCIONÁRIO
+                            </button>
+
+                            <button
+                                type="button"
+                                id="adicionarProjeto"
+                                class="botao-planejamento">
+                                + ADICIONAR PROJETO
+                            </button>
+
+                        </div>
+
+
+                        <!-- FUTUROS ALERTAS -->
+
+                        <div class="avisos-planejamento"
+                             id="avisosPlanejamento">
+
+                            <h3>AVISOS DO PLANEJAMENTO</h3>
+
+                            <p>
+                                Nenhum conflito identificado
+                                no exemplo atual.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- PAINEL DIREITO -->
+
+                <aside class="painel-projetos-planejamento">
+
+                    <h2>ATIVIDADES</h2>
+
+                    <div class="lista-resumo-projetos"
+                         id="resumoProjetos">
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+<!-- =====================================
+     FORMULÁRIO ADICIONAR FUNCIONÁRIO
+===================================== -->
+
+<div class="fundo-modal-planejamento" id="modalFuncionario">
+
+    <div class="modal-planejamento">
+
+        <h2>ADICIONAR FUNCIONÁRIO</h2>
+
+        <form id="formAdicionarFuncionario">
+
+            <label for="selecionarFuncionario">
+                FUNCIONÁRIO
+            </label>
+
+            <select id="selecionarFuncionario" required>
+                <option value="">Selecione um funcionário</option>
+            </select>
+
+            <div class="botoes-modal-planejamento">
+
+                <button type="button"
+                        class="botao-cancelar-modal"
+                        id="cancelarFuncionario">
+                    CANCELAR
+                </button>
+
+                <button type="submit"
+                        class="botao-confirmar-modal">
+                    ADICIONAR
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     FORMULÁRIO ADICIONAR PROJETO
+===================================== -->
+
+<div class="fundo-modal-planejamento" id="modalProjeto">
+
+    <div class="modal-planejamento">
+
+        <h2>ADICIONAR ATIVIDADE</h2>
+
+        <form id="formAdicionarProjeto">
+
+            <label for="selecionarProjeto">
+                PROJETO
+            </label>
+
+            <select id="selecionarProjeto" required>
+                <option value="">Selecione um projeto</option>
+            </select>
+
+
+            <label for="funcionarioProjeto">
+                FUNCIONÁRIO RESPONSÁVEL
+            </label>
+
+            <select id="funcionarioProjeto" required>
+                <option value="">Selecione um funcionário</option>
+            </select>
+
+
+            <label for="diaProjeto">
+                DIA DA SEMANA
+            </label>
+
+            <select id="diaProjeto" required>
+
+                <option value="">Selecione o dia</option>
+                <option value="2026-10-05">SEGUNDA</option>
+                <option value="2026-10-06">TERÇA</option>
+                <option value="2026-10-07">QUARTA</option>
+                <option value="2026-10-08">QUINTA</option>
+                <option value="2026-10-09">SEXTA</option>
+
+            </select>
+
+
+            <label for="horasProjeto">
+                QUANTIDADE DE HORAS
+            </label>
+
+            <input type="number"
+                   id="horasProjeto"
+                   min="1"
+                   max="24"
+                   required>
+
+
+            <div class="botoes-modal-planejamento">
+
+                <button type="button"
+                        class="botao-cancelar-modal"
+                        id="cancelarProjeto">
+                    CANCELAR
+                </button>
+
+                <button type="submit"
+                        class="botao-confirmar-modal">
+                    ADICIONAR
+                </button>
+
+            </div>
+                
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+    <script src="js/javaiport.js"></script>
+    <script src="js/planejamento.js"></script>
+
+</body>
+</html>

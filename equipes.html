@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>iPORT - Equipes</title>
+
+    <!-- CSS geral -->
+    <link rel="stylesheet" href="css/visuais.css">
+
+    <!-- CSS exclusivo de Equipes -->
+    <link rel="stylesheet" href="css/equipes.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <button class="botao-menu" id="botaoMenu">
+            ☰
+        </button>
+
+
+        <nav class="menu">
+
+            <a href="iport.html" class="menu-item">
+                <span class="menu-texto">
+                    VISÃO GERAL
+                </span>
+            </a>
+
+
+            <a href="funcionarios.php" class="menu-item">
+                <span class="menu-texto">
+                    FUNCIONÁRIOS
+                </span>
+            </a>
+
+
+            <a href="projetos.html" class="menu-item">
+                <span class="menu-texto">
+                    PROJETOS
+                </span>
+            </a>
+
+
+            <a href="planejamento.html" class="menu-item">
+                <span class="menu-texto">
+                    PLANEJAMENTOS
+                </span>
+            </a>
+
+
+            <a href="equipes.html" class="menu-item ativo">
+                <span class="menu-texto">
+                    EQUIPE (ATUAL)
+                </span>
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span class="menu-texto">
+                    HEATMAP
+                </span>
+            </a>
+
+        </nav>
+
+
+        <div class="logo">
+            iPORT
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         CONTEÚDO
+    ========================== -->
+
+    <main class="conteudo">
+
+        <section class="dashboard pagina-equipes">
+
+
+            <!-- TÍTULO -->
+
+            <header class="titulo-pagina">
+
+                <h1>MINHAS EQUIPES</h1>
+
+            </header>
+
+
+
+            <!-- =========================
+                 ÁREA DAS EQUIPES
+            ========================== -->
+
+            <section class="area-equipes">
+
+
+                <button
+                    class="botao-criar-equipe"
+                    id="abrirFormularioEquipe"
+
+                >
+
+                    <span class="simbolo-mais">+</span>
+
+                    CRIAR EQUIPE
+
+                </button>
+
+                <!-- =================================
+     FORMULÁRIO CRIAR EQUIPE
+================================= -->
+
+<div class="fundo-modal-equipe" id="fundoModalEquipe">
+
+    <div class="modal-equipe">
+
+        <h2>CRIAR EQUIPE</h2>
+
+
+        <form id="formEquipe">
+
+            <!-- NOME -->
+
+            <label for="nomeEquipe">
+                NOME DA EQUIPE
+            </label>
+
+            <input
+                type="text"
+                id="nomeEquipe"
+                maxlength="50"
+                required
+            >
+
+
+            <!-- DESCRIÇÃO -->
+
+            <label for="descricaoEquipe">
+                DESCRIÇÃO
+            </label>
+
+            <textarea
+                id="descricaoEquipe"
+                maxlength="300"
+                rows="5"
+                placeholder="Descreva brevemente a função desta equipe..."
+            ></textarea>
+
+
+            <!-- FUNCIONÁRIOS -->
+
+            <p class="titulo-funcionarios-equipe">
+                ADICIONAR FUNCIONÁRIOS
+            </p>
+
+
+            <div class="selecao-funcionarios">
+
+                <label class="opcao-funcionario">
+                    <input type="checkbox" value="Maria">
+                    Maria
+                </label>
+
+
+                <label class="opcao-funcionario">
+                    <input type="checkbox" value="Carlos">
+                    Carlos
+                </label>
+
+
+                <label class="opcao-funcionario">
+                    <input type="checkbox" value="João">
+                    João
+                </label>
+
+
+                <label class="opcao-funcionario">
+                    <input type="checkbox" value="Ana">
+                    Ana
+                </label>
+
+            </div>
+
+
+            <!-- BOTÕES -->
+
+            <div class="botoes-formulario-equipe">
+
+                <button
+                    type="button"
+                    id="cancelarEquipe"
+                    class="botao-cancelar-equipe"
+                >
+                    CANCELAR
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="botao-salvar-equipe"
+                >
+                    CRIAR EQUIPE
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+                <!-- =========================
+                     ESTADO VAZIO
+                ========================== -->
+
+                <div class="estado-vazio-equipes">
+
+                    <div class="balao-equipe">
+
+                        PARECE QUE VOCÊ AINDA NÃO<br>
+                        TEM NENHUMA EQUIPE!<br><br>
+
+                        PRESSIONE “CRIAR EQUIPE”<br>
+                        PARA COMEÇAR!
+
+                    </div>
+
+
+                    <div class="assistente">
+                        IA
+                    </div>
+
+                </div>
+
+
+                <!-- Futuramente o PHP colocará
+                     os cards das equipes aqui -->
+
+                <div class="lista-equipes">
+
+                </div>
+
+
+            </section>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- JS geral -->
+    <script src="js/javaiport.js"></script>
+
+    <!-- JS exclusivo de Equipes -->
+    <script src="js/equipes.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>iPORT - Projetos</title>
+
+    <!-- CSS geral -->
+    <link rel="stylesheet" href="css/visuais.css">
+
+    <!-- CSS exclusivo da página Projetos -->
+    <link rel="stylesheet" href="css/projetos.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <button class="botao-menu" id="botaoMenu">
+            ☰
+        </button>
+
+
+        <nav class="menu">
+
+            <a href="iport.html" class="menu-item">
+                <span class="menu-texto">
+                    VISÃO GERAL
+                </span>
+            </a>
+
+
+            <a  href="funcionarios.php" class="menu-item">
+                <span class="menu-texto">
+                    FUNCIONÁRIOS
+                </span>
+            </a>
+
+
+            <a href="projetos.html" class="menu-item ativo">
+                <span class="menu-texto">
+                    PROJETOS (ATUAL)
+                </span>
+            </a>
+
+
+            <a href="planejamento.html" class="menu-item">
+                <span class="menu-texto">
+                    PLANEJAMENTOS
+                </span>
+            </a>
+
+
+            <a href="equipes.html" class="menu-item">
+                <span class="menu-texto">
+                    EQUIPE
+                </span>
+            </a>
+
+
+            <a href="#" class="menu-item">
+                <span class="menu-texto">
+                    HEATMAP
+                </span>
+            </a>
+
+        </nav>
+
+
+        <div class="logo">
+            iPORT
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         CONTEÚDO
+    ========================== -->
+
+    <main class="conteudo">
+
+
+        <section class="dashboard pagina-projetos">
+
+
+            <!-- TÍTULO -->
+
+            <header class="titulo-pagina">
+
+                <h1>MEUS PROJETOS</h1>
+
+            </header>
+
+
+
+            <!-- =========================
+                 ÁREA PRINCIPAL
+            ========================== -->
+
+            <section class="area-projetos">
+
+
+                <!-- Botão criar projeto -->
+
+                <button class="botao-criar-projeto">
+
+                    <span class="simbolo-mais">+</span>
+
+                    CRIAR PROJETO
+
+                </button>
+                
+                
+
+
+                <!-- =========================
+                     ESTADO VAZIO
+                ========================== -->
+
+                <div class="estado-vazio">
+
+                    <div class="balao-projeto">
+
+                        VOCÊ AINDA NÃO TEM<br>
+
+                        NENHUM PROJETO. CLIQUE<br>
+
+                        EM “CRIAR PROJETO” PARA<br>
+
+                        ADICIONAR UM!
+
+                    </div>
+
+
+                    <div class="assistente">
+                        IA
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =========================
+                 ATIVIDADES
+            ========================== -->
+
+            <aside class="painel-atividades">
+
+
+                <h2>ATIVIDADES</h2>
+
+
+                <div class="atividade">
+
+                    <span>Marketing</span>
+
+                    <div class="atividade-info">
+
+                        <div class="barra-atividade marketing"></div>
+
+                        <span>24h</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="atividade">
+
+                    <span>Projeto A</span>
+
+                    <div class="atividade-info">
+
+                        <div class="barra-atividade projeto-a"></div>
+
+                        <span>0h</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="atividade">
+
+                    <span>Projeto C</span>
+
+                    <div class="atividade-info">
+
+                        <div class="barra-atividade projeto-c"></div>
+
+                        <span>0h</span>
+
+                    </div>
+
+                </div>
+
+
+            </aside>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- Mesmo JS da sidebar -->
+    <script src="js/javaiport.js"></script>
+    <script src="js/projetos.js"></script>
+
+
+</body>
+
+</html>
